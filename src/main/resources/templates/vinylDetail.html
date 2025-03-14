@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>黑胶详情 - MusicOnline</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div th:if="${vinyl != null}">
+    <h2>编辑黑胶信息</h2>
+    <form th:action="@{/vinyl/save}" method="post">
+      <input type="hidden" name="id" th:value="${vinyl.id}">
+      <div class="form-group">
+        <label>艺术家</label>
+        <input type="text" class="form-control" name="artist" th:value="${vinyl.artist}">
+      </div>
+      <div class="form-group">
+        <label>标题</label>
+        <input type="text" class="form-control" name="title" th:value="${vinyl.title}">
+      </div>
+      <div class="form-group">
+        <label>发行日期</label>
+        <input type="text" class="form-control" name="releaseDate" th:value="${vinyl.releaseDate}">
+      </div>
+      <div class="form-group">
+        <label>价格</label>
+        <input type="number" step="0.01" class="form-control" name="price" th:value="${vinyl.price}">
+      </div>
+      <div class="form-group">
+        <label>描述</label>
+        <textarea class="form-control" name="description"
+                  th:text="${vinyl.description}"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">保存</button>
+      <a th:href="@{/vinyl/delete/{id}(id=${vinyl.id})}" class="btn btn-danger"
+         onclick="return confirm('确定要删除吗？');">删除</a>
+    </form>
+  </div>
+  <div th:if="${vinyl == null}">
+    <h2>添加新黑胶</h2>
+    <form th:action="@{/vinyl/save}" method="post">
+      <div class="form-group">
+        <label>艺术家</label>
+        <input type="text" class="form-control" name="artist">
+      </div>
+      <div class="form-group">
+        <label>标题</label>
+        <input type="text" class="form-control" name="title">
+      </div>
+      <div class="form-group">
+        <label>发行日期</label>
+        <input type="text" class="form-control" name="releaseDate">
+      </div>
+      <div class="form-group">
+        <label>价格</label>
+        <input type="number" step="0.01" class="form-control" name="price">
+      </div>
+      <div class="form-group">
+        <label>描述</label>
+        <textarea class="form-control" name="description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

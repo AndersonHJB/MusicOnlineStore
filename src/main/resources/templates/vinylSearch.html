@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>搜索黑胶 - MusicOnline</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>搜索黑胶唱片</h1>
+  <div class="form-group">
+    <input type="text" id="keyword" class="form-control" placeholder="输入艺术家或唱片标题搜索">
+  </div>
+  <button class="btn btn-primary" id="searchBtn">搜索</button>
+
+  <table class="table table-bordered mt-3" id="resultTable" style="display:none;">
+    <thead>
+    <tr>
+      <th>艺术家</th>
+      <th>标题</th>
+      <th>详情</th>
+    </tr>
+    </thead>
+    <tbody id="resultBody">
+    </tbody>
+  </table>
+
+  <a href="/vinyl/add" class="btn btn-info mt-3">添加黑胶</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script th:src="@{/js/search.js}"></script>
+</body>
+</html>
